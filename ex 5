@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+<form id="myForm" onsubmit="return validateForm()">
+ <label for="car">what of car would you like to buy?</label><br>
+  <input type="radio" id="r1" name="car" value="proton"> proton
+  <input type="radio" id="r2" name="car" value="ferri"> ferri
+   <input type="radio" id="r3" name="car" value="ford">ford
+  <input type="radio" id="r4" name="car" value="honda"> honda<br><br>
+  
+   <label for="color">Choose color</label><br>
+  <select id="dd1" name="color">
+    <option value="">Select Color</option>
+    <option value="red">red</option>
+    <option value="black">black</option>
+    <option value="white">white</option>
+  </select><br><br>
+  
+  <label for="message">other opinion</label><br>
+  <textarea id="message" name="message"></textarea><br><br>
+   <h4>how can we contact you?</h4><br>
+  
+  
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br><br>
+ 
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+   <label for="phone">telephone:</label><br>
+  <input type="text" id="phone" name="phone"><br><br>
+  
+ 
+  
+  <input type="checkbox" id="check" name="check" value="check"> please contact us
+ <br><br>
+  
+ 
+  
+  
+  <input type="submit" value="Submit">
+  <input type ="button" value="clear">
+</form>
+
+<script>
+function validateForm() {
+var cartype = document.querySelector('input[name="car"]:checked');
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  
+  var checkbox = document.querySelectorAll('input[name="check"]:checked');
+  var color = document.getElementById("dd1").value;
+  var message = document.getElementById("message").value;
+  var telephone = document.getElementById('phone').value;
+
+  
+  if (name === "") {
+    alert("Name is required");
+    return false;
+  }
+
+  
+  if (email === "") {
+    alert("Email is required");
+    return false;
+  } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+    alert("Invalid email format");
+    return false;
+  }
+  if (telephone.trim() == "") {
+    alert("number must be filled out");
+    return false;
+  } else if (telephone.length < 10) {
+    alert("number must be  10 characters long");
+    return false;
+  }
+
+  
+  if (!cartype) {
+    alert("select one car");
+    return false;
+  }
+
+  
+  if (checkbox.length === 0) {
+    alert("click the box");
+    return false;
+  }
+
+  
+  if (color === "") {
+    alert("Color is required");
+    return false;
+  }
+
+  
+  if (message === "") {
+    alert("Message is required");
+    return false;
+  }
+
+  return true;
+}
+</script>
+
+</body>
+</html>
